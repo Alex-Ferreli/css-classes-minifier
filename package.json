@@ -1,0 +1,51 @@
+{
+  "name": "css-class-compressor",
+  "version": "1.0.2",
+  "description": "Utility tool to rename css classes with shorter name",
+  "repository": "https://github.com/Alex-Ferreli/css-class-compressor",
+  "jsnext:main": "lib/es6/index.js",
+  "main": "lib/cjs/index.js",
+  "module": "lib/es6/index.js",
+  "scripts": {
+    "prebuild": "concurrently \"npm run lint\" \"npm run test\" \"npm run clean\"",
+    "build-types": "tsc --declaration --emitDeclarationOnly",
+    "build-types:cjs": "npm run build-types -- --outDir lib/cjs",
+    "build-types:es6": "npm run build-types -- --outDir lib/es6",
+    "build:src": "babel src --extensions .ts --ignore src/**/*.spec.ts,src/**/*.test.ts --source-maps -d",
+    "build:src:cjs": "cross-env BABEL_ENV=cjs npm run build:src -- --out-dir lib/cjs",
+    "build:src:es6": "cross-env BABEL_ENV=es6 npm run build:src -- --out-dir lib/es6",
+    "build": "concurrently \"npm:build-types:cjs\" \"npm:build-types:es6\" \"npm:build:src:cjs\" \"npm:build:src:es6\"",
+    "clean": "rimraf lib",
+    "lint": "eslint src/**/*.ts --ignore-pattern src/**/*.test.ts",
+    "test": "jest src",
+    "test-w": "npm run jest -- --watch",
+    "release": "np --no-cleanup",
+    "postversion": "npm run build"
+  },
+  "author": {
+    "name": "Alex Ferreli",
+    "email": "ferreli.ale@gmail.com",
+    "url": "https://github.com/Alex-Ferreli"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.0",
+    "@babel/plugin-proposal-export-default-from": "^7.8.3",
+    "@babel/preset-env": "^7.9.5",
+    "@babel/preset-typescript": "^7.9.0",
+    "@types/jest": "^25.2.1",
+    "@types/node": "^13.11.1",
+    "@typescript-eslint/eslint-plugin": "^2.28.0",
+    "@typescript-eslint/parser": "^2.28.0",
+    "concurrently": "^5.1.0",
+    "cross-env": "^7.0.2",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-import": "^2.20.2",
+    "jest": "^25.3.0",
+    "np": "^6.2.1",
+    "rimraf": "^3.0.2",
+    "typescript": "^3.8.3"
+  }
+}
