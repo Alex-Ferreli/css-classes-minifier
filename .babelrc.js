@@ -4,7 +4,7 @@ module.exports = {
       presets: [
         ["@babel/preset-env", {
           targets: {
-            browsers: ["last 2 versions", "safari >= 7"]
+            node: "8"
           }
         }],
         "@babel/preset-typescript"
@@ -15,7 +15,7 @@ module.exports = {
       presets: [
         ["@babel/preset-env", {
           targets: {
-            browsers: ["last 2 versions", "safari >= 7"]
+            node: "8"
           },
           modules: false
         }],
@@ -27,7 +27,7 @@ module.exports = {
       presets: [
         ["@babel/preset-env", {
           targets: {
-            browsers: ["chrome 80"]
+            node: "8"
           },
         }],
         "@babel/preset-typescript"
