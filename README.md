@@ -1,78 +1,40 @@
-<h1 align="center">Welcome to combine-reducer 👋</h1>
+<h1 align="center">Welcome to css-class-minifier 👋</h1>
 <p>
-  <img alt="Version" src="https://img.shields.io/npm/v/combine-reducer.svg">
+  <img alt="Version" src="https://img.shields.io/npm/v/css-class-compressor.svg">
 </p>
 
-> Utility function to combine more reducers, assigned to single properties of state object.
+> Utility tool to rename css classes with shorter name.
 
 ## Why
-Sometimes reducer can become too long, with too much actions in a single switch statement.
+A simple tool to minify CSS classes in CSS and other (JS, HTML, etc.) files.
 
-This utility function is usefull to split reducer in multiple small reducers and assign them to single object property, making complex properties (array, object, etc) isolated with their single reducers.
+## Example API
+```js
+import cssClassesMinifier from 'css-classes-minifier';
 
-Actions need to be `UNIQUE` across all reducers to make it work like the initial giant reducer.
+(async () => {
+  console.log('Starting minifying...');
 
-It can be used with any reducers, so it work well with both Redux and reducers used with `useReducer` hook.
+  await cssClassesMinifier(['files/scripts*.js', 'files/styles*.css'], ['files/styles*.css']);
 
-## Example
-```ts
-interface ArrayType {
-  id: number;
-  name: string;
-}
-
-interface StateType {
-  name: string;
-  tables: ArrayType[];
-}
-
-const initialState: StateType = {
-  name: 'Alex',
-  tables: [],
-};
-
-const subReducer: Reducer<ArrayType[]> = (state, { type, name, id }): ArrayType[] => {
-  switch (type) {
-    case 'ADD': {
-      return [...state, { id, name }];
-    }
-    case 'REMOVE': {
-      return state.filter(t => t.id !== id);
-    }
-    default: {
-      return state;
-    }
-  }
-};
-
-const mainReducer: Reducer<StateType> = (state, { type, name }): StateType => {
-  switch (type) {
-    case 'UPDATE_NAME': {
-      return { ...state, name };
-    }
-    default: {
-      return state;
-    }
-  }
-};
-
-const finalReducer = mergeReducers<StateType>(mainReducer, { tables: subReducer });
-
-// Trigger main reducer action
-finalReducer(initialState, { type: 'UPDATE_NAME', name: 'Pippo' });
-
-// Trigger sub reducer action (to change tables property)
-finalReducer(initialState, { type: 'ADD', name: 'Test', id: 1 });
-
-// Using with useReducer
-const SimpleComponent = () => {
-  const [state, dispatch] = useReducer(finalReducer, initialState);
-  
-  dispatch({ type: 'UPDATE_NAME', name: 'Pippo' });
-  
-  dispatch({ type: 'ADD', name: 'Test', id: 1 });
-}
+  console.log('Minification completed!');
+})();
 ```
+
+## Example API
+```bash
+css-classes-minifier -f "files/scripts*.js,files/styles*.css" -c "files/styles*.css"
+```
+
+## Parameters
+Options can be provided as third argument of main function:
+|API usage name|CLI usage name|type|required|default|description|
+|---|---|---|---|---|---|
+|files|-f or --files|array of glob|x||glob of files that contains classes to replace
+|css|-c or --css|array of glob|x||glob of css that contains selectors to replace
+|prefix|-p or --prefix|string||empty string|prefix string to use in replaced class
+|suffix|-s or --suffix|string||empty string|suffix string to use in replaced class
+|whitelist|-w or --whitelist|array of string||[]|array of classes to exclude from replace
 
 ## Author
 

@@ -1,11 +1,14 @@
 {
-  "name": "css-class-compressor",
-  "version": "1.0.2",
+  "name": "css-classes-minifier",
+  "version": "1.0.0",
   "description": "Utility tool to rename css classes with shorter name",
-  "repository": "https://github.com/Alex-Ferreli/css-class-compressor",
+  "repository": "https://github.com/Alex-Ferreli/css-class-minifier",
   "jsnext:main": "lib/es6/index.js",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
+  "bin": {
+    "css-classes-minifier": "lib/cjs/cli.js"
+  },
   "scripts": {
     "prebuild": "concurrently \"npm run lint\" \"npm run test\" \"npm run clean\"",
     "build-types": "tsc --declaration --emitDeclarationOnly",
@@ -47,5 +50,12 @@
     "np": "^6.2.1",
     "rimraf": "^3.0.2",
     "typescript": "^3.8.3"
+  },
+  "dependencies": {
+    "@types/css-tree": "^1.0.3",
+    "commander": "^5.1.0",
+    "css-tree": "^1.0.0-alpha.39",
+    "incstr": "^1.2.3",
+    "tiny-glob": "^0.2.6"
   }
 }
