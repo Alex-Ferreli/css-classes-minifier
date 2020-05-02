@@ -15,7 +15,7 @@ import cssClassesMinifier from 'css-classes-minifier';
 (async () => {
   console.log('Starting minifying...');
 
-  await cssClassesMinifier(['files/scripts*.js', 'files/styles*.css'], ['files/styles*.css']);
+  await cssClassesMinifier({ files: ['files/scripts*.js', 'files/styles*.css'], css: ['files/styles*.css'] });
 
   console.log('Minification completed!');
 })();
