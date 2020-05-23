@@ -1,4 +1,4 @@
-<h1 align="center">Welcome to css-class-minifier 👋</h1>
+# css-class-minifier
 
 [![npm version](https://badge.fury.io/js/css-class-minifier.svg)](https://badge.fury.io/js/css-class-minifier)
 
