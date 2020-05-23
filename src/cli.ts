@@ -33,6 +33,4 @@ if (!(program.css && program.files)) program.help();
   };
 
   await cssClassesMinifier(options);
-
-  console.log('Minified');
 })();
