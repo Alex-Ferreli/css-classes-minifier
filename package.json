@@ -1,6 +1,6 @@
 {
   "name": "css-classes-minifier",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Utility tool to rename css classes with shorter name",
   "repository": "https://github.com/Alex-Ferreli/css-classes-minifier",
   "jsnext:main": "lib/es6/index.js",
