@@ -1,6 +1,6 @@
-# css-class-minifier
+# css-classes-minifier
 
-[![npm version](https://badge.fury.io/js/css-class-minifier.svg)](https://badge.fury.io/js/css-class-minifier)
+[![npm version](https://badge.fury.io/js/css-classes-minifier.svg)](https://badge.fury.io/js/css-classes-minifier)
 
 ## Why
 Utility tool to rename css classes with a generated shorter name.
